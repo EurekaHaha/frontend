@@ -1,0 +1,28 @@
+1. 客户端发送client_hello  
+    * 包含TLS版本信息  
+    * 包含随机数，用于后续密钥协商
+    * 加密套件候选列表  
+    * 压缩算法候选列表
+    * 其他
+2. 服务端接收到client_hello后
+    1. 发送server_hello，并返回协商的信息结果  
+        * 选择的TLS版本
+        * 选择的加密套件
+        * 选择的加密算法
+        * 随机数
+        * 其他
+    2. 服务端发送证书
+    3. 服务端发送sever_hello_done表示服务器响应结束
+> 第一次握手结束，此时客户端与服务端共享了两个随机数与服务端证书
+3. 客户端接收到服务端的响应后
+    1. 验证证书的有效性
+    2. 生成随机数pre-master
+    3. 使用证书公钥加密pre-master,将加密结果发送给服务端,这个请求时client_key_exchange
+    4. 客户端根据握手时产生的两个随机数和pre-master计算出对称加密密钥。
+    5. 发送change_cipher_spec报文，表示之后会话改用密钥加密通信。
+    6. 发送finish请求
+4. 服务端接收到client_key_exchange后
+    1. 解密pre-master
+    2. 根据两个随机数和pre-master计算出对称加密密钥。
+    3. 发送change_cipher_spec报文，表示之后会话改用密钥加密通信。
+    4. 发送finish请求
