@@ -1,15 +1,4 @@
-## 浏览器的进程
-
-在chrome中有如下4个进程
-
-* 浏览器进程(Browser Process): 负责处理浏览器的tab栏，前进后退，地址栏，书签栏，和处理一些浏览器的底层操作如网络请求和文件访问。
-* 渲染进程(Renderer Process)：负责一个tab的显示的相关工作，即渲染引擎。  
-    * 一个主线程(main thread)
-    * 多个工作线程(work thread)
-    * 一个合成器线程(compositor thread)
-    * 多个光栅化线程(raster thread)
-* 插件进程(Plugin Process)：负责插件。
-* GPU进程(GPU Process)：负责处理整个应用程序的GPU任务。
+## 分析和渲染
 
 在获得render tree后，浏览器知道了元素的不同结构、样式、几何关系。将这些信息转化为显示器中的像素，这个过程叫做*光栅化*。
 

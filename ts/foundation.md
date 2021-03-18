@@ -26,4 +26,40 @@ ts中新增的数据类型
     * 永远不会有返回值的类型
 4. 元组
 5. 枚举
+    * 一组有名字的常量集合
+    * 数字枚举、字符串枚举、异构枚举
+    ```typescript
+    enum numberEnum {
+        a = 1,    // 可设置初始化的值,否则为0
+        b,        // 2
+        c         // 3
+    };
+    // 数字枚举可以反向映射
+    numberEnum[1] === 'a';
+    numberEnum.a === 1;
+    ---
+    enum stringEnum {
+        a = 'aaa',
+        b = 'bbb'
+    }
+    // 字符串枚举不可反向映射
+    stringEnum.a = 'aaa';
+    stringEnum.aaa === undefined;
+    ---
+    enum heterogeneousEnum {
+        a,
+        b = 'bbb'
+    }
+    // 异构枚举是指字符串枚举和数字枚举混用
+    ---
+    const enum constEnum {
+        Jan,
+        Feb,
+        Mar
+    }
+    // 常量枚举在编译阶段会被移除
+    ```
+    * 枚举成员的值不可修改
+    * 枚举成员分为常量成员和计算成员
+    * 枚举类型不可被比较
 6. 高级类型
