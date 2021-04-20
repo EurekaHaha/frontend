@@ -119,3 +119,24 @@ function inheritPrototype(subType, superType) {
     subType.prototype = prototype;
 }
 ```
+
+## new的实现
+---
+
+new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一。
+
+实现：
+```js
+function myNew() {
+    // 创建空对象
+    let obj = Object.create(null);
+    // 获取函数
+    let constructor = [].shift().apply(arguments);
+    // 将空对像的__proto__指向函数的prototype
+    obj.__proto__ = Object.create(constructor.prototype );
+    // 以空为this执行函数
+    let ret = constructor.apply(obj, arguments);
+    // 判断返回哪个对象
+    typeof ret === 'object' ? ret : obj;
+}
+```

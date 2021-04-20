@@ -1,6 +1,6 @@
-## 数据类型
+# 类型
 
-### 类型
+## 语言类型
 ---
 ECMA有6种原始的数据类型，`Undefined`,`Null`,`Boolean`,`Number`,`String`,`Symbol`;还有一种复杂的数据类型`Object`;`Fucntion`被看作一种复杂的对象。并非一种类型。
 
@@ -70,6 +70,7 @@ Number类型使用IEEE 754格式表示证书喝浮点值(双精度值)。
             * null，返回0。
             * undefined，返回NaN。
             * string
+                * 字符串前的0和空格会忽略掉。
                 * 字符串包含数值字符，则会转化为十进制数字。
                 * 字符串包含有效十六进制格式，则会转换为与该十六进制相等的十进制整数值。
                 * 其他情况转化为NaN。
@@ -183,3 +184,21 @@ Number类型使用IEEE 754格式表示证书喝浮点值(双精度值)。
 * 装箱转换即把基本类型转化为相应类型的对象。
 * 拆箱转换即将相应类型的对象转换为基本类型。即toPrimitive函数。
     * 拆箱转换会尝试调用对象的`valueOf()`和`toString()`来确定基本类型，如果这两个函数都不存在，或者没有返回基本类型，则会产生`TypeError`错误。
+
+## 规范类型
+
+### Reference
+---
+[详细](https://262.ecma-international.org/11.0/#sec-reference-specification-type)
+* 用于描述对象的属性
+* 属性
+    * `base value`
+        * `base value`可以是`undefined`,一个`Object`,一个`Boolean`,一个`String`,一个`Symbol`,一个`Number`,一个`BigInt`或者一个`Environment Record`
+        * `base value`即所在的对象
+    * `referenced name`
+        * `referenced name`可以是`Symbol`或者`String`
+        * 对象的名称
+    * `strict reference flag`
+        * 是否为严格模式
+    * (optional)`thisValue`
+        * *Super Reference*代表使用了`super`关键字表示的命名绑定，且它的`base value`永远不会是`Environment Record`
