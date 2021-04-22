@@ -6,7 +6,7 @@
 
 ## javascript
 
-* [js](./js/Javascript.md)
+* [js](./js/JavaScript.md)
 
 ## 网络部分
 

@@ -1,4 +1,8 @@
 ## 执行上下文
+
+[规范](https://262.ecma-international.org/11.0/#sec-execution-contexts)
+
+
 ---
 ## 作用域
 ---
