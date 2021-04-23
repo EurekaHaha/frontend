@@ -26,7 +26,7 @@ ES在基本层面定义了如下部分
 * 全局对象
 
 > [原型相关](./prototype.md)  
-> [作用域相关](./scope.md)
+> [执行环境相关](./environment.md)
 
 ### 文档对象模型(Document Object Model)
 ---

@@ -16,7 +16,7 @@
 *  需要额外空间储存属性名
 *  所有对象偏移量各存一份 (各对象)
 
-## 基本类型
+## 类型
 
 ts中新增的数据类型
 
@@ -63,6 +63,57 @@ ts中新增的数据类型
     * 枚举成员分为常量成员和计算成员
     * 枚举类型不可被比较
 6. 高级类型
+    1. 交叉类型和联合类型
+    ```typescript
+    interface A {
+        a(): void
+    }
+    interface B {
+        b(): void
+    }
+    // 交叉取并集
+    let ab: A & B = {
+        a() {},
+        b() {}
+    }
+
+    let a: number | string = 1;
+    a = '1';
+    let c: 1 | 2 | 3;
+    ```
+    2. 索引类型
+    ```typescript
+    /**
+     * 索引类型的操作符  keyof T
+     * 表示T类型的所有公共属性的字面量的联合类型
+     */
+    interface Test {
+        a: number,
+        b: string
+    }
+    let c: keyof Test === let c: 'a' | 'b'
+
+    /**
+     * 索引访问操作符 T[K]
+     * 表示T的属性K所代表的类型
+     */
+
+    let d: Test['a'] === let d: number
+
+    let obj = {
+        a: 1,
+        b: 2,
+        c: '3'
+    }
+
+    function getValues(obj: any, keys: string[]) {
+        return keys.map(key => obj[key])
+    }
+    // 修改为泛型
+    function getValues<T, K extends keyof T>(obj: T, keys: K[]): T[K][] {
+        return keys.map(key => obj[key])
+    }
+    ```
 
 ## 接口(interface) type关键字 类(class)
 ---
@@ -70,6 +121,33 @@ ts中新增的数据类型
 ### 接口
 
 接口可以用来约束对象、函数和类的结构。  
+接口可以继承多个接口。  
+接口可以继承类。
+```typescript
+class A {
+    a: number = 1;
+    constructor() {};
+    b() {
+        return this;
+    }
+}
+
+interface IB extends A {
+    c: string;
+}
+
+class B implements IB {
+    a = 123;
+    c = '111';
+    b() {
+        return null;
+    };
+}
+
+class C extends A implements IB {
+    c = '123';
+}
+```
 
 ### type关键字
 
@@ -148,5 +226,32 @@ class A implements IA {
 }
 ```
 
-
 **抽象类更注重类别的抽象,接口注重功能的抽象**
+
+## 泛型
+---
+
+是指不预先确定的数据类型，具体的类型在使用时才能确定。
+
+```typescript
+type Log = <T>(value: T) => T;
+interface Log {
+  <T>(value: T):T
+}
+
+// 用以上方式来定义接口或者类型时，需要按如下方式实现
+let log: Log = function(b) {
+    return b
+}
+
+type Log<T> = (value: T) => T;
+interface Log<T> {
+  (value: T):T
+}
+
+// 用以上方式来定义接口或者类型时，需要按如下方式实现
+
+let log: Log<number> = function(b) {
+    return b
+}
+```

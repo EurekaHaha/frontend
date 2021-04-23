@@ -2,7 +2,7 @@
 
 ## 语言类型
 ---
-ECMA有6种原始的数据类型，`Undefined`,`Null`,`Boolean`,`Number`,`String`,`Symbol`;还有一种复杂的数据类型`Object`;`Fucntion`被看作一种复杂的对象。并非一种类型。
+ECMA有6种原始的数据类型，`Undefined`,`Null`,`Boolean`,`Numeric`,`String`,`Symbol`;还有一种复杂的数据类型`Object`;`Fucntion`被看作一种复杂的对象。并非一种类型。
 
 ### typeof
 ---
@@ -28,10 +28,10 @@ String表示零个或者多个16位Unicode字符序列(UTF16编码)。
 `charAt`,`charCodeAt`,`length`等方法都是针对于UTF16编码的。  
 字符串是不可改变的，即一创建就不能改变它的值了。
 
-### Number
+### Numeric
 ---
-Number类型使用IEEE 754格式表示证书喝浮点值(双精度值)。
-1. 浮点值
+Number类型使用IEEE 754格式表示整数和浮点值(双精度值)。
+1. 浮点值(Number类型)
     * `1.`在js中被认为是整数1。
     * js中规定浮点数不可进行比较。
     * js中数字运算需要转化位二进制，浮点数转化二进制不精确。
@@ -82,7 +82,9 @@ Number类型使用IEEE 754格式表示证书喝浮点值(双精度值)。
             * `parseInt`第二个参数是用来指定底数(进制数)。
         3. `parseFloat()`
             * 只解析十进制。
-
+5. BigInt
+    * BigInt 是一种内置对象，它提供了一种方法来表示大于 2^53 - 1 的整数。这原本是 Javascript中可以用 Number 表示的最大数字。BigInt 可以表示任意大的整数。
+    * 可以用在一个整数字面量后面加 n 的方式定义一个 BigInt ，如：10n，或者调用函数BigInt()。
 ### Symbol
 ---
 * Symbol是原始值，且Symbol实例是唯一、不可变的。
