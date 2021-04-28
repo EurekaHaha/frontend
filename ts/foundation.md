@@ -255,3 +255,7 @@ let log: Log<number> = function(b) {
     return b
 }
 ```
+
+
+# 导图
+![导图](../imgs/ts_foundation.jpg)
